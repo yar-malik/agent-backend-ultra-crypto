@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const toolsController_1 = require("../controllers/toolsController");
+const validateApiKey_1 = require("../middleware/validateApiKey");
+const router = (0, express_1.Router)();
+router.use(validateApiKey_1.validateApiKey);
+router.post('/', toolsController_1.toolsController.createTool);
+router.get('/', toolsController_1.toolsController.getAllTools);
+router.get('/:toolId', toolsController_1.toolsController.getTool);
+router.put('/:toolId', toolsController_1.toolsController.updateTool);
+router.delete('/:toolId', toolsController_1.toolsController.deleteTool);
+exports.default = router;
