@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
-import { VoiceNotFoundError } from '../types/voice.types';
+import { Request, Response, NextFunction } from "express";
+import { VoiceNotFoundError } from "../types/voice.types";
 
 export const errorHandler = (
   error: Error,
@@ -12,11 +12,11 @@ export const errorHandler = (
     return;
   }
 
-  if (error.name === 'ValidationError') {
+  if (error.name === "ValidationError") {
     res.status(400).json({ error: error.message });
     return;
   }
 
-  console.error('Unexpected error:', error);
-  res.status(500).json({ error: 'Internal server error' });
-}; 
+  console.error("Unexpected error:", error);
+  res.status(500).json({ error: "Internal server error" });
+};

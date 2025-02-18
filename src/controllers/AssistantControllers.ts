@@ -37,10 +37,10 @@ export const createVoice = async (req: Request, res: Response) => {
 
         // Log the constructed voiceData
         console.log('Voice data to be saved:', voiceData);
-        
+
         const voice = new Voice(voiceData);
         const savedVoice = await voice.save();
-        
+
         // Log the saved result
         console.log('Saved voice data:', savedVoice);
 
@@ -146,7 +146,7 @@ export const deleteVoice = async (req: Request, res: Response) => {
 export const getAllVoices = async (req: Request, res: Response) => {
     try {
         const voices = await Voice.find({});
-        
+
         return res.status(200).json({
             success: true,
             data: voices

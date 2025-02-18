@@ -18,6 +18,6 @@ export interface IVoiceResponse {
 export class VoiceNotFoundError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = 'VoiceNotFoundError';
+    this.name = "VoiceNotFoundError";
   }
-} 
+}

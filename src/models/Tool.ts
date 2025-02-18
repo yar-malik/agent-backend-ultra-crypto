@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface ITool extends Document {
   toolId: string;
@@ -21,25 +21,28 @@ export interface ITool extends Document {
   };
 }
 
-const ToolSchema = new Schema({
-  toolId: { type: String, required: true },
-  name: { type: String, required: true },
-  created: { type: String, required: true },
-  definition: {
-    description: { type: String, required: true },
-    requirements: {
-      httpSecurityOptions: {
-        options: [Schema.Types.Mixed]
-      }
+const ToolSchema = new Schema(
+  {
+    toolId: { type: String, required: true },
+    name: { type: String, required: true },
+    created: { type: String, required: true },
+    definition: {
+      description: { type: String, required: true },
+      requirements: {
+        httpSecurityOptions: {
+          options: [Schema.Types.Mixed],
+        },
+      },
+      http: {
+        baseUrlPattern: { type: String, required: true },
+        httpMethod: { type: String, required: true },
+      },
+      modelToolName: { type: String, required: true },
+      timeout: String,
+      precomputable: Boolean,
     },
-    http: {
-      baseUrlPattern: { type: String, required: true },
-      httpMethod: { type: String, required: true }
-    },
-    modelToolName: { type: String, required: true },
-    timeout: String,
-    precomputable: Boolean
-  }
-}, { timestamps: true });
+  },
+  { timestamps: true }
+);
 
-export const Tool = mongoose.model<ITool>('Tool', ToolSchema); 
+export const Tool = mongoose.model<ITool>("Tool", ToolSchema);
